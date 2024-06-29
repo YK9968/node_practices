@@ -3,6 +3,7 @@ import cors from "cors";
 import pino from "pino-http";
 import { envConfig } from "./utils/env.config.js";
 import { productRouter } from "./routes/products.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 export const startServer = () => {
   const app = express();
@@ -16,7 +17,9 @@ export const startServer = () => {
     })
   );
   app.use("/products", productRouter);
-  const { PORT = 3000} = envConfig;
+
+  app.use(errorHandler);
+  const { PORT = 3000 } = envConfig;
 
   app.listen(PORT, () => {
     console.log(`Running server on port ${PORT}`);
