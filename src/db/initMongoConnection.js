@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import { envConfig } from "../../utils/env.config.js";
+import { envConfig } from "../utils/env.config.js";
 
 const { MONGODB_USER, MONGODB_PASSWORD, MONGODB_URL, MONGODB_DB } = envConfig;
 
@@ -17,4 +17,3 @@ export const initMongoConnection = async () => {
   }
 };
 
-console.log(process.env);
